@@ -157,9 +157,11 @@ Up to four lookup terms, two concurrent lookups, one nearby Insights query per b
 
 No secrets belong in `NEXT_PUBLIC_*`, Git, screenshots, recordings or shared text. `.env*` is ignored except the blank example. Qloo data remains subject to the API access terms; the MIT code license does not grant rights to redistribute provider data. No live API result snapshots are bundled. Original illustrations and fictional fixtures use MIT. Dependencies retain their own licenses.
 
-## Publish later — not performed
+## Source publication and hosting
 
-When you explicitly choose to publish, create a new standalone repository from **this folder**, not the workspace root:
+The source is now published at [tarun-vignes/tampa-taste-trail](https://github.com/tarun-vignes/tampa-taste-trail). To host it on your existing Render account, follow the [Render deployment steps](docs/render-deployment.md); the repository includes a free-service Blueprint. A public website has not yet been verified.
+
+The commands below document initial publication from **this folder**, not the workspace root. This checkout is already connected and pushed; do not repeat repository creation:
 
 ```powershell
 git init -b main

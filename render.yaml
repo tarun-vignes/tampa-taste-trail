@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: tampa-taste-trail
+    runtime: node
+    plan: free
+    repo: https://github.com/tarun-vignes/tampa-taste-trail
+    branch: main
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm exec -- next start --hostname 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: NODE_VERSION
+        value: 22.19.0
+      - key: NODE_ENV
+        value: production
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-3.1-flash-lite
+      - key: QLOO_BASE_URL
+        value: https://api.qloo.com
+      - key: ALLOW_FIXTURE_DEMO
+        value: 'true'
