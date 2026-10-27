@@ -7,6 +7,7 @@ import {
   parsePlaces,
   QlooClient,
   resultArray,
+  candidateDiagnostic,
 } from '../lib/server/qloo';
 import { distanceMeters, inSearchArea } from '../lib/server/geography';
 import { profile, rawPlace } from './helpers';
@@ -118,6 +119,23 @@ describe('preference extraction and validation', () => {
   });
 });
 describe('Qloo response contracts', () => {
+  it('exposes only allowlisted schema diagnostics, never arbitrary provider values', () => {
+    const diagnostic = candidateDiagnostic({
+      entity_id: 'private-id',
+      name: 'private-name',
+      type: 'private-token',
+      api_key: 'private-key',
+      types: ['urn:entity:artist', 'private-secret'],
+    });
+    const text = JSON.stringify(diagnostic);
+    expect(text).not.toContain('private-');
+    expect(text).not.toContain('api_key');
+    expect(text).toContain('urn:entity:artist');
+    expect(diagnostic.fields).toMatchObject({
+      entity_id: 'string',
+      types: 'array',
+    });
+  });
   it('validates explicit search type arrays and subtype-only records without inferring a category', () => {
     const identity = {
       entity_id: '10000000-0000-0000-0000-000000000009',

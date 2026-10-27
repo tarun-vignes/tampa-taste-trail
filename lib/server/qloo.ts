@@ -76,6 +76,61 @@ export function resultArray(raw: unknown, key: 'entities' | 'tags'): unknown[] {
     );
   return rows;
 }
+// A failed contract exposes only known field shapes and allowlisted categories,
+// never raw rows, IDs, names, arbitrary values, headers or provider credentials.
+export function candidateDiagnostic(row: unknown): Record<string, unknown> {
+  const record =
+    row && typeof row === 'object' ? (row as Record<string, unknown>) : {};
+  const fields = Object.fromEntries(
+    [
+      'entity_id',
+      'id',
+      'name',
+      'type',
+      'subtype',
+      'types',
+      'entity',
+      'properties',
+    ].map((key) => [
+      key,
+      record[key] === null
+        ? 'null'
+        : Array.isArray(record[key])
+          ? 'array'
+          : typeof record[key],
+    ]),
+  );
+  const allowed = new Set([
+    'urn:entity',
+    'urn:entity:artist',
+    'urn:entity:movie',
+    'urn:entity:place',
+    'artist',
+    'movie',
+    'place',
+    'entity',
+    'music',
+    'film',
+  ]);
+  const category = (value: unknown): unknown =>
+    Array.isArray(value)
+      ? value
+          .slice(0, 5)
+          .map((item) =>
+            typeof item === 'string' && allowed.has(item) ? item : '[other]',
+          )
+      : typeof value === 'string' && allowed.has(value)
+        ? value
+        : '[other]';
+  return {
+    fields,
+    categories: {
+      type: category(record.type),
+      subtype: category(record.subtype),
+      types: category(record.types),
+    },
+  };
+}
 export function parseCandidates(raw: unknown, interest: Interest): Candidate[] {
   const rows = resultArray(
     raw,
@@ -112,6 +167,7 @@ export function parseCandidates(raw: unknown, interest: Interest): Candidate[] {
       502,
       'QLOO_RESPONSE',
       'Qloo taste candidates could not be validated. Change the term or retry.',
+      candidateDiagnostic(rows[0]),
     );
   return candidates
     .filter(

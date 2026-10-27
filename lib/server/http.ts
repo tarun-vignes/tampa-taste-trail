@@ -121,7 +121,14 @@ export function createApi(settings: Settings, overrides: Overrides = {}) {
         return json(await agent.plan(value));
       } catch (error) {
         if (error instanceof ServiceError)
-          return json({ code: error.code, error: error.message }, error.status);
+          return json(
+            {
+              code: error.code,
+              error: error.message,
+              ...(error.diagnostic ? { diagnostic: error.diagnostic } : {}),
+            },
+            error.status,
+          );
         if (error instanceof z.ZodError)
           return json(
             {
