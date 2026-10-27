@@ -1,5 +1,17 @@
 # Verification record
 
+## Public live verification — October 27, 2026
+
+- Fixed candidate classification so a missing singular `type` does not reject an explicit compatible `subtype` or `types` collection. A UUID, nonempty name and explicit requested artist/movie/place classification remain required. Wrong categories and malformed IDs remain rejected.
+- Independently reproduced the original HTTP 502 failures for Burna Boy and Interstellar; spicy-food tag resolution succeeded. After deployment, `/api/resolve` returned HTTP 200 with five candidates and an exact match for each of Burna Boy, Interstellar and spicy food.
+- `/api/plan` returned HTTP 200 using all three confirmed IDs: two entity signals and one tag signal. Eleven nearby candidates passed validation and two real stops were assembled. This verifies integration, not subjective recommendation quality, operating hours or budget fit.
+- Actual public Chrome UI passed signal confirmation and two-stop rendering with no browser runtime errors. The browser harness supplied the known input profile instead of invoking Gemini; Qloo lookups, ID revalidation and discovery were real hosted requests. This run does not claim a fresh Gemini test.
+- Local suite: 48 tests passed, plus lint and TypeScript. The preceding parser build and formatting checks passed. GitHub CI for commits `ee46c5a` and `05895e3` passed, including production build and bounded secret checks.
+- Validation errors now include only bounded known field types and allowlisted category labels in a machine-readable diagnostic. A test verifies that arbitrary provider values and credentials are never reflected. No raw provider snapshots or keys were written into project files.
+- Live site: https://tampa-taste-trail.onrender.com . Source: https://github.com/tarun-vignes/tampa-taste-trail . Hosting remains managed in the owner's Render account. No Devpost submission was performed.
+
+## Initial local verification — October 24, 2026
+
 Checked locally on October 24, 2026, using Windows, Node 22.19.0 and Chrome.
 
 | Check                             | Observed result                                                                                                                                        |

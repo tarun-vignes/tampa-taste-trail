@@ -122,8 +122,16 @@ export function candidateDiagnostic(row: unknown): Record<string, unknown> {
       : typeof value === 'string' && allowed.has(value)
         ? value
         : '[other]';
+  const validated = entitySchema.safeParse(record);
   return {
     fields,
+    invalidFields: validated.success
+      ? []
+      : validated.error.issues.map(
+          (issue) => `${issue.path.join('.')}:${issue.code}`,
+        ),
+    idLength:
+      typeof record.entity_id === 'string' ? record.entity_id.length : null,
     categories: {
       type: category(record.type),
       subtype: category(record.subtype),

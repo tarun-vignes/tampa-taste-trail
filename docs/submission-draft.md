@@ -32,7 +32,7 @@ Budget, date/time and group size are preferences, not verified prices, business 
 
 ## Verification and progress
 
-[Replace with your actual real Qloo test details after adding an authorized key and confirming the assigned host. No real Qloo flow was tested during initial implementation.]
+On October 27, the public app resolved exact Qloo matches for Burna Boy, Interstellar and spicy food, revalidated all three IDs, and built a two-stop trail from 11 geographically validated place candidates. The browser flow also passed using a supplied test profile and real Qloo requests. This demonstrates integration rather than measured recommendation quality or user impact.
 
 Gemini extraction has a real provider smoke check; automated tests mock external services. Actual check results live in `docs/verification.md`. No recommendation-quality, user-impact or adoption metric is claimed.
 
@@ -46,8 +46,8 @@ Next.js, TypeScript, React, Qloo API, Google Gemini, Zod, CSS, Vitest, Testing L
 
 ## Links and disclosures
 
-- Public demo: [Add actual externally hosted and anonymously verified URL.]
-- Public source: [Add actual `tampa-taste-trail` repository URL after authorizing publication.]
+- Public demo: https://tampa-taste-trail.onrender.com
+- Public source: https://github.com/tarun-vignes/tampa-taste-trail
 - Root license: MIT. API data remains subject to Qloo's access terms.
 - Built with Codex assistance. No personal research, impact or learning claims are fabricated.
 - Demo video: optional; not required by the verified rules.
@@ -55,9 +55,9 @@ Next.js, TypeScript, React, Qloo API, Google Gemini, Zod, CSS, Vitest, Testing L
 ## Manual completion
 
 - [ ] Verify eligibility and current event/API rules.
-- [ ] Obtain Qloo key; set its exact authorized host and verify real discovery.
+- [x] Obtain Qloo key; set its exact authorized host and verify real discovery.
 - [ ] Confirm source/unknown labels using actual API responses.
-- [ ] Authorize a new public repository and external deployment.
-- [ ] Test the public app anonymously end to end; fixtures alone do not qualify.
+- [x] Authorize a new public repository and external deployment.
+- [x] Test public signal confirmation and itinerary rendering with real Qloo results; fixtures alone do not qualify.
 - [ ] Fill in personal sections and actual links.
 - [ ] Submit personally before October 30, 2026, 11:45 p.m. EDT.

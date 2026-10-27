@@ -139,7 +139,7 @@ npm.cmd run check:ai
 npm.cmd run check:qloo
 ```
 
-`check:qloo` requires an issued key and correct host. It fails visibly when credentials, exact lookup matches or verified stops are unavailable; it never marks a fixture result as success. No real Qloo check was possible in this session.
+`check:qloo` requires an issued key and correct host. It fails visibly when credentials, exact lookup matches or verified stops are unavailable; it never marks a fixture result as success. Public live verification on October 27 resolved Burna Boy, Interstellar and spicy food, revalidated all three IDs, and built a real two-stop trail. See [verification](docs/verification.md) for the exact test scope; no provider key is bundled.
 
 With the local app running and fictional preview enabled:
 
@@ -159,7 +159,7 @@ No secrets belong in `NEXT_PUBLIC_*`, Git, screenshots, recordings or shared tex
 
 ## Source publication and hosting
 
-The source is now published at [tarun-vignes/tampa-taste-trail](https://github.com/tarun-vignes/tampa-taste-trail). To host it on your existing Render account, follow the [Render deployment steps](docs/render-deployment.md); the repository includes a free-service Blueprint. A public website has not yet been verified.
+The source is published at [tarun-vignes/tampa-taste-trail](https://github.com/tarun-vignes/tampa-taste-trail). The public app is [tampa-taste-trail.onrender.com](https://tampa-taste-trail.onrender.com), verified with real Qloo discovery on October 27. The [Render deployment steps](docs/render-deployment.md) describe reproducing the free-service deployment in your own account.
 
 The commands below document initial publication from **this folder**, not the workspace root. This checkout is already connected and pushed; do not repeat repository creation:
 
@@ -181,4 +181,4 @@ After deployment, personally exercise real taste resolution, signal review, geog
 
 The [official event](https://qloo.devpost.com/) lists **October 30, 2026, 11:45 p.m. EDT**. It requires a real functional demo published externally, public source, an open-source license, and a description. **No video is required.** Confirm your eligibility and current rules; a local or fixture-only preview does not complete those submission requirements.
 
-Remaining: obtain/test Qloo access, authorize source publication and external deployment, inspect the actual public app, complete your personal description, and submit manually. Prepared materials: [event check](docs/event-verification.md), [live walkthrough](docs/demo-script.md), [editable submission](docs/submission-draft.md). No personal inspiration, user research, impact result or learning outcome is invented.
+Source publication, external deployment and a public three-signal Qloo flow have been verified. Remaining: confirm current eligibility/access rules, review recommendation quality for your chosen tastes, complete your personal description, and submit manually. Prepared materials: [event check](docs/event-verification.md), [live walkthrough](docs/demo-script.md), [editable submission](docs/submission-draft.md). No personal inspiration, user research, impact result or learning outcome is invented.
