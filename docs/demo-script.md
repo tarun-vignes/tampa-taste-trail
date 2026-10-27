@@ -3,7 +3,7 @@
 Use a genuine externally hosted build with an authorized Qloo key for judging. A fictional preview demonstrates interface behavior only; it must not be described as real Qloo discovery. No recording/upload is required by the verified event page.
 
 1. **State the problem.** “A search can find places in Tampa, but it does not necessarily connect what I listen to, watch and enjoy. This app uses Qloo cultural signals to find candidates, with an agent that makes the source visible.”
-2. **Enter a real preference request.** Use the student-friendly sample: Afrobeats, sci-fi, spicy food, a relaxed evening for two, group target under $100. Show the actual parser label. Do not claim Gemini if the page says rules.
+2. **Enter a real preference request.** Use the verified sample: Burna Boy, the movie Interstellar, spicy food, a relaxed evening for two, group target $100. Show the actual parser label. Do not claim Gemini if the page says rules. Check the current matches; no search result is guaranteed to stay identical.
 3. **Correct the profile.** Change/remove a taste, set the intended date, and show that no venues have been invented yet. Explain that budget does not certify price.
 4. **Resolve through Qloo.** Show returned tags/entities, inspect ambiguity, and explicitly confirm matches that actually represent the user's intent. If results are sparse, refine the terms rather than choosing arbitrary tags.
 5. **Build the trail.** Show the actual Qloo result names/IDs and geographic filter, then expand the trace. Explain which step was Qloo, which was app ordering, and what remains unknown.

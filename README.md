@@ -4,7 +4,7 @@
 
 A taste-aware outing planner for Tampa visitors and residents who want a small, considered plan rather than another generic list. Music, film, dining and activity interests become editable cultural signals; Qloo discovers nearby places using those signals; the app validates geography and suggests an order.
 
-**Current status:** local implementation; no GitHub repository, hosted site, or Devpost submission has been created. A real Gemini request was tested. No Qloo credential was available, so real Qloo discovery still needs verification. Fictional previews are explicitly separate and do not qualify as the event's real Qloo-powered demo.
+**Current status:** [public app](https://tampa-taste-trail.onrender.com) and [MIT-licensed source](https://github.com/tarun-vignes/tampa-taste-trail) are available. Real Gemini extraction and a three-signal Qloo discovery flow have been verified. See [the verification record](docs/verification.md) for exact checks and limitations. No Devpost submission has been performed by this agent. Fictional previews remain explicitly separate from real discovery.
 
 ## Run locally
 
@@ -31,7 +31,7 @@ Both commands serve at port 3003 for this dedicated project, avoiding the other 
 
 ## Example journey
 
-1. Enter: “I like Afrobeats, sci-fi movies, and spicy food. Plan a relaxed Saturday evening in Tampa for two people, under $100.”
+1. Enter: “I like Burna Boy, the movie Interstellar, and spicy food. Plan a relaxed evening in Tampa for two people with a total budget of $100.” Named artist/movie lookups make all three domains easy to review; genre tags may have different names or no match.
 2. Inspect the parser's taste terms, category, lookup type, date, budget and group size. Correct, remove or add terms before discovery. Diet/accessibility preferences may appear as unverified notes; they are not assurances.
 3. Click **Find my Qloo signals**. Named artists/films use Qloo entity Search; genres and concepts use Qloo Tags. Review the returned candidates. Only an exact, unique name match is preselected; ambiguous candidates need your explicit choice.
 4. Click **Build my taste trail**. The server revalidates the selected IDs against lookup results and sends them as Qloo Insights interest signals with a Tampa area filter.
@@ -150,6 +150,8 @@ npm.cmd run check:browser
 This uses installed Chrome/Edge/Chromium through Playwright Core. Set `BROWSER_EXECUTABLE` if auto-detection cannot find yours, and `TEST_ORIGIN` if using another local URL. The script explicitly forces rule extraction and fixture discovery, so it spends no model or Qloo quota. It captures actual preview screenshots in ignored `artifacts/screenshots/`. Test results and limits are recorded in [verification](docs/verification.md).
 
 ## Security and limits
+
+For an opt-in audit against the actual public app, run `npm.cmd run check:hosted`. It uses installed Chrome and intentionally consumes one real Gemini extraction plus Qloo lookups and two itinerary builds. It also checks clipboard export, replacement, revised preferences, geography, responsive layouts and safe invalid-input rejection. Empty/error presentation is tested with explicitly identified browser mocks. The script never reads provider keys; they stay in Render. Results and screenshots are written only to ignored `artifacts/`. Set `TEST_ORIGIN` to check another deployment. This is a functional audit, not a guarantee of venue quality, availability, accessibility or safety.
 
 Inputs and model/provider responses are untrusted. The server validates body size (16 KB), prompt length, taste count (four), dates/times, group size, selected IDs and response envelopes. Mutations require a custom intent header and matching browser origin when supplied. Requests have timeouts; no blind retry loop exists. IDs selected by the browser must reappear in server-side lookup results for the same profile before Insights can run. Text uses React escaping, and external website links must be HTTPS.
 

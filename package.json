@@ -18,6 +18,7 @@
     "check:ai": "tsx --env-file-if-exists=.env scripts/check-ai.ts",
     "check:qloo": "tsx --env-file-if-exists=.env scripts/check-qloo.ts",
     "check:browser": "tsx scripts/check-browser.ts",
+    "check:hosted": "tsx scripts/check-hosted.ts",
     "check:secrets": "tsx scripts/check-secrets.ts"
   },
   "dependencies": {

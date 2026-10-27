@@ -1,5 +1,22 @@
 # Verification record
 
+## Submission-readiness audit — October 27, 2026
+
+**Technical verdict: ready for submission, subject to the entrant completing their Devpost description and confirming eligibility.** This is a functional check, not a prediction of judging results or a guarantee of provider uptime.
+
+- Rechecked the official overview and rules: externally published working demo, real Qloo-powered agentic workflow, public source, detectable open-source license and English description are required. No video is required. Deadline remains October 30, 2026, 11:45 p.m. Eastern. The rules require access to remain available through judging, which ends November 5, 2026, 11:45 p.m. Eastern. Sources: https://qloo.devpost.com/ and https://qloo.devpost.com/rules .
+- GitHub API confirmed the repository is public and detects its root MIT license. CI for `dbc45ab` passed. No other project directory was modified for this audit.
+- Full local validation passed: 48 tests, formatting, lint, TypeScript, production build and bounded secret scan. A fresh `npm audit --omit=dev --json` reported zero known runtime dependency vulnerabilities.
+- After the sample/documentation update, repeated the required local checks successfully and ran the existing production-server `check:browser` desktop/mobile fixture regression: passed. This separate local fixture run made no provider calls.
+- The reusable `npm run check:hosted` audit passed against the anonymous public HTTPS app in real Chrome. Its happy path used **actual Gemini extraction**, Qloo resolution of all three artist/movie/food interests, server-side ID revalidation, and actual nearby place discovery. A relaxed Tampa plan had two stops; changing budget to $120, area to Ybor City and pace to balanced rebuilt three stops without another AI extraction. All stop and alternative coordinates passed the requested area check; selected stop IDs were unique.
+- Browser verification also passed keyboard movement, validated-pool replacement, clipboard export including sources/unknowns, and layouts at 360, 390, 768 and 1440 pixels without horizontal overflow. Desktop and mobile screenshots were visually inspected; local artifacts remain ignored, not bundled provider-data snapshots.
+- Live negative requests rejected party size zero, forged signal IDs and a foreign Origin. Status returned only known availability/model/limit fields. Health and anonymous page returned HTTP 200 with expected security headers.
+- Empty results, Qloo outage and Gemini outage **presentation** used explicit browser mocks. The rule-extraction recovery after the simulated Gemini outage was a real server call and required the user's explicit button click. Those mocks are not claimed as actual provider outages or real empty discovery results. No browser runtime errors occurred.
+- An earlier fresh Gemini attempt returned the app's `AI_INVALID` error. A direct retry completed successfully in 3.1 seconds, and the final full browser run used real Gemini successfully. The failed attempt's exact underlying cause was not determined. Provider/network transients remain a practical limitation; the app exposes retry or explicitly labeled rule extraction and never silently invents a successful AI result.
+- Corrected stale publication claims in the README, made the primary sample the verified named-artist/movie request, and added the reproducible hosted audit command. No personal inspiration, lessons, user research or impact metrics were invented.
+
+Remaining entrant actions: complete the bracketed personal sections in `docs/submission-draft.md`, copy the actual app/repository URLs into Devpost, confirm eligibility and ownership/API-access conditions, submit personally before the deadline, and keep the Render service and issued API credentials available to judges. A labeled fictional preview may still be enabled by the owner; it is separate from the verified real flow. Formal accessibility certification, an exhaustive venue-quality study and continuous uptime monitoring were not performed.
+
 ## Public live verification — October 27, 2026
 
 - Fixed candidate classification so a missing singular `type` does not reject an explicit compatible `subtype` or `types` collection. A UUID, nonempty name and explicit requested artist/movie/place classification remain required. Wrong categories and malformed IDs remain rejected.

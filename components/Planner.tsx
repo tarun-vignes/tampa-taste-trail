@@ -23,7 +23,7 @@ const examples = [
   {
     name: 'A relaxed evening',
     prompt:
-      'I like Afrobeats, sci-fi movies, and spicy food. Plan a relaxed Saturday evening in Tampa for two people, under $100.',
+      'I like Burna Boy, the movie Interstellar, and spicy food. Plan a relaxed evening in Tampa for two people with a total budget of $100.',
   },
   {
     name: 'Jazz & a little art',

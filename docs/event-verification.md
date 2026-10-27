@@ -10,4 +10,4 @@ Read the [official event](https://qloo.devpost.com/) and [rules](https://qloo.de
 
 MIT is the chosen code license. Implementation, design, impact and idea quality are the published judging categories. No changed deadline or video requirement was found relative to the supplied prompt.
 
-The project is prepared locally. Qloo access, a real discovery run, public repository and hosting still require completion after authorization. No publishing, organizer messages, repository creation or submission were performed. Review the live rules and your API access agreement again before entering.
+Rechecked October 27: public MIT source and the externally hosted app are available; real Gemini extraction and real Qloo three-signal planning were verified. See `docs/verification.md` for actual evidence and transient-provider limits. No organizer messages or Devpost submission were performed. Review your eligibility and API access agreement before entering, and keep the app and credentials available through November 5, 2026, 11:45 p.m. Eastern, when the stated judging period ends.

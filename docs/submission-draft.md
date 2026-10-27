@@ -34,7 +34,7 @@ Budget, date/time and group size are preferences, not verified prices, business 
 
 On October 27, the public app resolved exact Qloo matches for Burna Boy, Interstellar and spicy food, revalidated all three IDs, and built a two-stop trail from 11 geographically validated place candidates. The browser flow also passed using a supplied test profile and real Qloo requests. This demonstrates integration rather than measured recommendation quality or user impact.
 
-Gemini extraction has a real provider smoke check; automated tests mock external services. Actual check results live in `docs/verification.md`. No recommendation-quality, user-impact or adoption metric is claimed.
+The full public-browser readiness check used real Gemini extraction and Qloo discovery, then verified stop replacement, clipboard export, and a rebuild after area/budget/pace changes. Forty-eight automated tests passed; automated unit/UI tests mock providers. Empty/error presentation was separately tested with explicit browser mocks. One earlier Gemini request failed transiently; retry and the final full flow succeeded. Actual scope and limits are recorded in `docs/verification.md`. No recommendation-quality, user-impact or adoption metric is claimed.
 
 ## Challenges / what I learned
 
@@ -56,8 +56,8 @@ Next.js, TypeScript, React, Qloo API, Google Gemini, Zod, CSS, Vitest, Testing L
 
 - [ ] Verify eligibility and current event/API rules.
 - [x] Obtain Qloo key; set its exact authorized host and verify real discovery.
-- [ ] Confirm source/unknown labels using actual API responses.
+- [x] Confirm source/unknown labels using actual API responses.
 - [x] Authorize a new public repository and external deployment.
 - [x] Test public signal confirmation and itinerary rendering with real Qloo results; fixtures alone do not qualify.
-- [ ] Fill in personal sections and actual links.
+- [ ] Fill in personal inspiration/learning sections and verify the supplied actual links.
 - [ ] Submit personally before October 30, 2026, 11:45 p.m. EDT.
