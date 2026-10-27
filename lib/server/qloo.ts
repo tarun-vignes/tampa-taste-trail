@@ -21,9 +21,17 @@ const tagSchema = z.object({
 const entitySchema = z.object({
   entity_id: idSchema,
   name: z.string().trim().min(1).max(200),
-  type: z.string().max(100),
-  subtype: z.string().max(100).optional(),
+  type: z.string().max(100).nullish(),
+  subtype: z.string().max(100).nullish(),
+  types: z.array(z.string().max(100)).max(20).optional(),
 });
+function hasEntityType(entity: z.infer<typeof entitySchema>, expected: string) {
+  return (
+    entity.type === expected ||
+    entity.subtype === expected ||
+    entity.types?.includes(expected) === true
+  );
+}
 const placeSchema = entitySchema.extend({
   location: z.object({
     lat: z.number().min(-90).max(90),
@@ -90,10 +98,7 @@ export function parseCandidates(raw: unknown, interest: Interest): Candidate[] {
         interest.category === 'music'
           ? 'urn:entity:artist'
           : 'urn:entity:movie';
-      if (
-        entity.success &&
-        (entity.data.subtype === expected || entity.data.type === expected)
-      )
+      if (entity.success && hasEntityType(entity.data, expected))
         candidates.push({
           id: entity.data.entity_id,
           name: entity.data.name,
@@ -124,13 +129,7 @@ export function parsePlaces(
   let discarded = 0;
   for (const row of rows) {
     const parsed = placeSchema.safeParse(row);
-    if (
-      !parsed.success ||
-      !(
-        parsed.data.subtype === 'urn:entity:place' ||
-        parsed.data.type === 'urn:entity:place'
-      )
-    ) {
+    if (!parsed.success || !hasEntityType(parsed.data, 'urn:entity:place')) {
       discarded++;
       continue;
     }

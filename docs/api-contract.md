@@ -21,6 +21,7 @@ The default origin is **`https://api.qloo.com`**, confirmed in the official reci
 The minimal parser recognizes the provider's result-array and nested `results.entities` / `results.tags` envelopes, including the maintained harness's result-array convention. Explicit `success:false`, missing collections and unreadable payloads are errors. Search's documented HTTP 404 becomes no matches; other endpoint 404s remain failures.
 
 - Entities require nonempty `name`, a UUID-shaped `entity_id`, and a compatible `type`/`subtype`.
+- Search compatibility update (October 27): an explicit requested URN in a bounded `types` array also establishes the category; `type` need not be present if `subtype` or `types` supplies it. Records without any explicit compatible classification are still rejected. IDs and names are never invented from the request text.
 - Tags require `id` beginning `urn:tag:`, a nonempty `name`, and an optional `type` label.
 - Places require `location.lat` and `location.lon` and place type. Only supplied description, address, websites, price-level and tag fields are exposed. Missing descriptions stay missing. Invalid/absent coordinates, duplicates, wrong types and out-of-area places are discarded and counted.
 - Optional website links must be HTTPS without embedded credentials. No provider image asset is copied or embedded.

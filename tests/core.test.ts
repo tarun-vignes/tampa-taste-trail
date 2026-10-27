@@ -118,6 +118,53 @@ describe('preference extraction and validation', () => {
   });
 });
 describe('Qloo response contracts', () => {
+  it('validates explicit search type arrays and subtype-only records without inferring a category', () => {
+    const identity = {
+      entity_id: '10000000-0000-0000-0000-000000000009',
+      name: 'Example artist',
+    };
+    const interest = {
+      term: 'Example artist',
+      category: 'music',
+      lookup: 'entity',
+    } as const;
+    for (const classification of [
+      { types: ['urn:entity:artist'] },
+      { subtype: 'urn:entity:artist' },
+      { type: null, subtype: 'urn:entity:artist' },
+      { type: 'urn:entity:artist' },
+    ]) {
+      expect(
+        parseCandidates(
+          { results: [{ ...identity, ...classification }] },
+          interest,
+        )[0].id,
+      ).toBe(identity.entity_id);
+    }
+    for (const classification of [
+      {},
+      { types: ['urn:entity:movie'] },
+      { types: ['artist'] },
+      { types: 'urn:entity:artist' },
+    ]) {
+      expect(() =>
+        parseCandidates(
+          { results: [{ ...identity, ...classification }] },
+          interest,
+        ),
+      ).toThrow();
+    }
+    expect(() =>
+      parseCandidates(
+        {
+          results: [
+            { ...identity, entity_id: 'fake', types: ['urn:entity:artist'] },
+          ],
+        },
+        interest,
+      ),
+    ).toThrow();
+  });
   it('accepts documented result collections and rejects missing or failed envelopes', () => {
     expect(resultArray({ success: true, results: [] }, 'entities')).toEqual([]);
     expect(resultArray({ results: { tags: [] } }, 'tags')).toEqual([]);
